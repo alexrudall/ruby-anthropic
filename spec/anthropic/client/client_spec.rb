@@ -22,4 +22,15 @@ RSpec.describe Anthropic::Client do
       end
     end
   end
+
+  describe "per-client URL configuration" do
+    it "uses the client-specific URI base and API version" do
+      client = Anthropic::Client.new(
+        uri_base: "https://example.test/",
+        api_version: "v2"
+      )
+
+      expect(client.send(:uri, path: "/messages")).to eq("https://example.test/v2/messages")
+    end
+  end
 end

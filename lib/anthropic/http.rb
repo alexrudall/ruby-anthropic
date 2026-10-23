@@ -175,7 +175,7 @@ module Anthropic
     end
 
     def uri(path:)
-      Anthropic.configuration.uri_base + Anthropic.configuration.api_version + path
+      @uri_base + @api_version + path
     end
 
     # Unused except by unused method
